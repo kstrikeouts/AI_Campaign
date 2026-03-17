@@ -10,9 +10,7 @@
 
         * {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0; padding: 0; box-sizing: border-box;
         }
 
         :root {
@@ -27,17 +25,16 @@
 
         html { scroll-behavior: smooth; }
 
+        /* ★ Base font: 21px (+5pt total from original 16px) */
         body {
             background: var(--apple-bg);
             color: var(--apple-gray-1);
             letter-spacing: -0.01em;
             overflow-x: hidden;
-            font-size: 20px;
+            font-size: 21px;
         }
 
-        /* ======================== */
-        /* ★ LOGO — 위치 내림 (top: 80px) */
-        /* ======================== */
+        /* === LOGO === */
         .page-logo {
             position: fixed;
             top: 80px;
@@ -49,7 +46,6 @@
             transition: all 0.3s ease;
             pointer-events: none;
         }
-
         .page-logo.on-dark {
             filter: brightness(0) invert(1);
             opacity: 0.7;
@@ -66,20 +62,17 @@
             z-index: 9999;
             transition: all 0.3s ease;
         }
-
         .glass-nav.scrolled {
             background: rgba(251, 251, 253, 0.92);
             box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
         }
-
         .nav-link {
             color: var(--apple-gray-2);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 500;
             transition: color 0.25s ease;
             position: relative;
         }
-
         .nav-link::after {
             content: '';
             position: absolute;
@@ -89,7 +82,6 @@
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
-
         .nav-link:hover { color: var(--apple-gray-1); }
         .nav-link:hover::after { width: 100%; }
         .nav-link.active { color: var(--apple-gray-1); }
@@ -113,25 +105,9 @@
             opacity: 0.35;
             animation: orbFloat 20s ease-in-out infinite;
         }
-
-        .orb-1 {
-            width: 600px; height: 600px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            top: -200px; right: -100px;
-        }
-        .orb-2 {
-            width: 500px; height: 500px;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            bottom: -200px; left: -100px;
-            animation-delay: -7s;
-        }
-        .orb-3 {
-            width: 400px; height: 400px;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -14s;
-        }
+        .orb-1 { width: 600px; height: 600px; background: linear-gradient(135deg, #667eea, #764ba2); top: -200px; right: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: linear-gradient(135deg, #f093fb, #f5576c); bottom: -200px; left: -100px; animation-delay: -7s; }
+        .orb-3 { width: 400px; height: 400px; background: linear-gradient(135deg, #4facfe, #00f2fe); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -14s; }
 
         @keyframes orbFloat {
             0%, 100% { transform: translate(0, 0) scale(1); }
@@ -140,18 +116,37 @@
             75% { transform: translate(40px, 30px) scale(1.02); }
         }
 
-        /* ★ Vol Badge — 위치 내림 (top: 80px), 글씨 키움 */
+        /* ★ Hero Character */
+        .hero-character {
+            position: absolute;
+            left: -20px;
+            bottom: 0;
+            z-index: 15;
+            pointer-events: none;
+        }
+        .hero-character img {
+            height: 85vh;
+            max-height: 780px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 60px rgba(100, 100, 255, 0.15));
+            animation: characterFloat 6s ease-in-out infinite;
+        }
+        @keyframes characterFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Vol Badge */
         .vol-badge {
             position: absolute;
             top: 80px;
             left: 42px;
             z-index: 20;
         }
-
         .vol-badge-inner {
             display: inline-flex;
             align-items: center;
-            gap: 0;
             padding: 14px 28px;
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.07);
@@ -159,9 +154,8 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
         }
-
         .vol-badge-text {
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             font-weight: 800;
             letter-spacing: -0.01em;
             background: linear-gradient(135deg, #ffd60a 0%, #ff9f0a 40%, #ff375f 100%);
@@ -170,7 +164,7 @@
             background-clip: text;
         }
 
-        /* Hero Title */
+        /* Hero Titles */
         .hero-title-main {
             font-size: 5.8rem;
             font-weight: 900;
@@ -183,9 +177,8 @@
             background-clip: text;
             animation: gradientShiftSlow 8s ease-in-out infinite;
         }
-
         .hero-title-sub {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 500;
             letter-spacing: -0.02em;
             background: linear-gradient(90deg, #86868b, #a1a1a6, #86868b);
@@ -195,9 +188,8 @@
             background-clip: text;
             animation: gradientShiftSlow 6s ease-in-out infinite;
         }
-
         .hero-tagline {
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.4;
@@ -208,13 +200,11 @@
             background-clip: text;
             animation: gradientShiftSlow 10s ease-in-out infinite;
         }
-
         @keyframes gradientShiftSlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .hero-badge-pill {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -224,54 +214,27 @@
 
         /* === SECTION TITLES === */
         .section-title {
-            font-size: 3.5rem;
+            font-size: 3.6rem;
             font-weight: 800;
             letter-spacing: -0.04em;
             line-height: 1.1;
         }
 
-        .gradient-text-blue {
-            background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 50%, #0071e3 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .gradient-text-purple {
-            background: linear-gradient(135deg, #5e5ce6 0%, #bf5af2 50%, #5e5ce6 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .gradient-text-cyan {
-            background: linear-gradient(135deg, #64d2ff 0%, #5e5ce6 50%, #64d2ff 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .gradient-text-teal {
-            background: linear-gradient(135deg, #30d158 0%, #64d2ff 50%, #0071e3 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .gradient-text-green {
-            background: linear-gradient(135deg, #30d158 0%, #34c759 50%, #00c7be 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .gradient-text-red {
-            background: linear-gradient(135deg, #ff453a 0%, #ff6961 40%, #ff9500 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-        .gradient-text-summary {
-            background: linear-gradient(135deg, #0071e3 0%, #5e5ce6 33%, #bf5af2 66%, #0071e3 100%);
+        .gradient-text-blue { background: linear-gradient(135deg, #0071e3 0%, #5ac8fa 50%, #0071e3 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 6s ease-in-out infinite; }
+        .gradient-text-purple { background: linear-gradient(135deg, #5e5ce6 0%, #bf5af2 50%, #5e5ce6 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 6s ease-in-out infinite; }
+        .gradient-text-cyan { background: linear-gradient(135deg, #64d2ff 0%, #5e5ce6 50%, #64d2ff 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 6s ease-in-out infinite; }
+        .gradient-text-teal { background: linear-gradient(135deg, #30d158 0%, #64d2ff 50%, #0071e3 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 6s ease-in-out infinite; }
+        .gradient-text-green { background: linear-gradient(135deg, #30d158 0%, #34c759 50%, #00c7be 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 6s ease-in-out infinite; }
+        /* ★ 만능키 그라데이션 — 골드+레드+오렌지 */
+        .gradient-text-caution {
+            background: linear-gradient(135deg, #ffd60a 0%, #ff375f 40%, #ff9500 70%, #ffd60a 100%);
             background-size: 300% 300%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: gradientShift 8s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease-in-out infinite;
         }
+        .gradient-text-summary { background: linear-gradient(135deg, #0071e3 0%, #5e5ce6 33%, #bf5af2 66%, #0071e3 100%); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 8s ease-in-out infinite; }
 
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
@@ -279,57 +242,37 @@
             100% { background-position: 0% 50%; }
         }
 
-        .section-subtitle {
-            font-size: 1.55rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: var(--apple-gray-2);
-        }
+        /* (+5pt total) */
+        .section-subtitle { font-size: 1.6rem; font-weight: 400; line-height: 1.6; color: var(--apple-gray-2); }
 
         /* === CARDS === */
         .glass-card {
             background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 24px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
+        .glass-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); border-color: rgba(0, 0, 0, 0.1); }
         .dark-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .dark-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(255, 255, 255, 0.14);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
+        .dark-card:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.14); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
 
-        /* === TEXT SIZE CLASSES === */
-        .card-heading { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; }
-        .card-body { font-size: 1.125rem; line-height: 1.75; }
-        .label-sm { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; }
-        .text-2xs { font-size: 0.95rem; }
-        .sub-heading { font-size: 1.125rem; font-weight: 700; }
-        .sub-body { font-size: 1.05rem; line-height: 1.75; }
-        .text-tiny { font-size: 1rem; }
-        .dark-subtitle { font-size: 1.375rem; font-weight: 400; line-height: 1.6; color: #86868b; }
+        /* ★ TEXT SIZES (+5pt total from original) */
+        .card-heading { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; }
+        .card-body { font-size: 1.2rem; line-height: 1.75; }
+        .label-sm { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.02em; }
+        .text-2xs { font-size: 1rem; }
+        .sub-heading { font-size: 1.2rem; font-weight: 700; }
+        .sub-body { font-size: 1.1rem; line-height: 1.75; }
+        .text-tiny { font-size: 1.05rem; }
+        .dark-subtitle { font-size: 1.45rem; font-weight: 400; line-height: 1.6; color: #86868b; }
 
-        /* === TYPE BADGE === */
-        .type-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 6px 14px; border-radius: 100px;
-            font-size: 1rem; font-weight: 600;
-        }
+        .type-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; font-size: 1.05rem; font-weight: 600; }
 
         /* === CODE BLOCK === */
         .code-block {
@@ -337,108 +280,54 @@
             border-radius: 16px;
             padding: 28px 32px;
             font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.85;
             color: #e5e5ea;
             overflow-x: auto;
         }
-        .code-block .prompt-label {
-            color: #86868b; font-size: 0.95rem;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            display: block; margin-bottom: 12px;
-        }
+        .code-block .prompt-label { color: #86868b; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 12px; }
         .code-block .highlight { color: #64d2ff; }
         .code-block .string { color: #ffd60a; }
         .code-block .comment { color: #636366; }
+        /* ★ Markdown heading styles inside code block */
+        .code-block .md-h1 { color: #ff9f0a; font-weight: 700; font-size: 1.25rem; }
+        .code-block .md-h2 { color: #64d2ff; font-weight: 600; font-size: 1.15rem; }
+        .code-sm { font-size: 1.1rem !important; padding: 20px 24px !important; }
 
-        .code-sm { font-size: 1.05rem !important; padding: 20px 24px !important; }
-
-        /* === PILL === */
-        .pill {
-            display: inline-block; padding: 8px 18px; border-radius: 100px;
-            font-size: 1.05rem; font-weight: 500;
-        }
+        .pill { display: inline-block; padding: 8px 18px; border-radius: 100px; font-size: 1.1rem; font-weight: 500; }
         .pill-blue { background: rgba(0, 113, 227, 0.08); color: #0071e3; }
         .pill-green { background: rgba(52, 199, 89, 0.08); color: #248a3d; }
         .pill-red { background: rgba(255, 59, 48, 0.08); color: #d70015; }
         .pill-purple { background: rgba(175, 82, 222, 0.08); color: #8944ab; }
 
-        /* === TIMELINE === */
         .timeline-item { position: relative; padding-left: 36px; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-            width: 2px; background: linear-gradient(180deg, var(--apple-blue), rgba(0,113,227,0.1));
-        }
-        .timeline-item::after {
-            content: ''; position: absolute; left: -5px; top: 8px;
-            width: 12px; height: 12px; border-radius: 50%;
-            background: var(--apple-blue); box-shadow: 0 0 0 4px rgba(0,113,227,0.15);
-        }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--apple-blue), rgba(0,113,227,0.1)); }
+        .timeline-item::after { content: ''; position: absolute; left: -5px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--apple-blue); box-shadow: 0 0 0 4px rgba(0,113,227,0.15); }
 
-        /* === PAGE INDICATOR === */
-        .page-indicator {
-            position: fixed; right: 32px; top: 50%; transform: translateY(-50%);
-            z-index: 9998; display: flex; flex-direction: column; gap: 12px;
-        }
-        .page-dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background: var(--apple-gray-4); transition: all 0.3s ease; cursor: pointer;
-        }
-        .page-dot.active {
-            background: var(--apple-blue); transform: scale(1.4);
-            box-shadow: 0 0 0 3px rgba(0,113,227,0.2);
-        }
+        .page-indicator { position: fixed; right: 32px; top: 50%; transform: translateY(-50%); z-index: 9998; display: flex; flex-direction: column; gap: 12px; }
+        .page-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--apple-gray-4); transition: all 0.3s ease; cursor: pointer; }
+        .page-dot.active { background: var(--apple-blue); transform: scale(1.4); box-shadow: 0 0 0 3px rgba(0,113,227,0.2); }
         .page-dot:hover { background: var(--apple-gray-3); transform: scale(1.2); }
 
-        /* === SCROLL PROGRESS === */
-        .scroll-progress {
-            position: fixed; top: 0; left: 0; height: 2px;
-            background: linear-gradient(90deg, #0071e3, #64d2ff);
-            z-index: 99999; transition: width 0.1s linear;
-        }
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, #0071e3, #64d2ff); z-index: 99999; transition: width 0.1s linear; }
 
-        /* === FLOW === */
         .flow-arrow { color: #48484a; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .flow-step {
-            border-radius: 16px; padding: 16px 20px; text-align: center;
-            font-size: 1.1rem; font-weight: 600; flex: 1; min-width: 0; transition: all 0.3s ease;
-        }
+        .flow-step { border-radius: 16px; padding: 16px 20px; text-align: center; font-size: 1.15rem; font-weight: 600; flex: 1; min-width: 0; transition: all 0.3s ease; }
         .flow-step:hover { transform: scale(1.03); }
 
-        /* === CAUTION BOX === */
         .caution-box {
             background: linear-gradient(135deg, rgba(255,59,48,0.04), rgba(255,149,0,0.04));
             border: 1px solid rgba(255,59,48,0.12);
             border-radius: 20px; position: relative; overflow: hidden;
         }
-        .caution-box::before {
-            content: ''; position: absolute; top: 0; left: 0;
-            width: 4px; height: 100%; background: linear-gradient(180deg, #ff3b30, #ff9500);
-        }
+        .caution-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, #ff3b30, #ff9500); }
 
-        /* === SUMMARY CARD === */
-        .summary-grid-item {
-            background: #ffffff; border-radius: 20px;
-            border: 1px solid rgba(0,0,0,0.05); padding: 28px;
-            transition: all 0.4s ease;
-        }
+        .summary-grid-item { background: #ffffff; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); padding: 28px; transition: all 0.4s ease; }
         .summary-grid-item:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.06); transform: translateY(-2px); }
 
-        /* === NUM HIGHLIGHT === */
-        .num-highlight {
-            font-size: 4.5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1;
-            background: linear-gradient(135deg, #0071e3, #64d2ff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
+        .num-highlight { font-size: 4.5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; background: linear-gradient(135deg, #0071e3, #64d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .icon-circle { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
 
-        /* === ICON CIRCLE === */
-        .icon-circle {
-            width: 56px; height: 56px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; flex-shrink: 0;
-        }
-
-        /* === ANIMATIONS === */
         .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .fade-in-delay-1 { transition-delay: 0.1s; }
@@ -447,34 +336,96 @@
         .fade-in-delay-4 { transition-delay: 0.4s; }
         .fade-in-delay-5 { transition-delay: 0.5s; }
 
-        /* === FOOTER === */
         .footer-section { background: #1d1d1f; }
+
+        .example-prompt-box {
+            background: #1d1d1f; border-radius: 12px; padding: 16px 20px;
+            font-family: 'SF Mono', 'Fira Code', monospace; font-size: 1rem; line-height: 1.7; color: #e5e5ea;
+        }
+        .example-prompt-box .ep-label { font-size: 0.85rem; color: #86868b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; display: block; font-family: 'Inter', sans-serif; }
+        .example-prompt-box .ep-highlight { color: #64d2ff; }
+        .example-prompt-box .ep-string { color: #ffd60a; }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--apple-gray-4); border-radius: 4px; }
 
-        /* === EXAMPLE PROMPT IN TYPE CARDS === */
-        .example-prompt-box {
-            background: #1d1d1f;
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #e5e5ea;
+        /* ================================== */
+        /* ★ RESPONSIVE / MOBILE OPTIMIZATION */
+        /* ================================== */
+        @media (max-width: 1024px) {
+            .hero-character img { height: 60vh; max-height: 500px; }
+            .hero-character { left: -40px; }
+            .hero-title-main { font-size: 4.2rem; }
+            .hero-title-sub { font-size: 1.8rem; }
+            .hero-tagline { font-size: 1.6rem; }
+            .section-title { font-size: 2.8rem; }
+            .page-indicator { display: none; }
+            .glass-nav .flex.items-center.gap-7 { gap: 1rem; }
+            .nav-link { font-size: 0.9rem; }
         }
-        .example-prompt-box .ep-label {
-            font-size: 0.8rem;
-            color: #86868b;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
-            display: block;
-            font-family: 'Inter', sans-serif;
+
+        @media (max-width: 768px) {
+            body { font-size: 18px; }
+
+            .glass-nav .flex.items-center.gap-7 { display: none; }
+            .glass-nav { padding: 0 16px; }
+
+            .page-logo { height: 28px; top: 70px; right: 20px; }
+            .vol-badge { top: 70px; left: 20px; }
+            .vol-badge-inner { padding: 10px 18px; }
+            .vol-badge-text { font-size: 1.1rem; }
+
+            .hero-section { min-height: 100vh; padding-top: 100px; }
+            .hero-character { left: -60px; bottom: 0; }
+            .hero-character img { height: 45vh; max-height: 380px; opacity: 0.3; }
+            .hero-title-main { font-size: 3rem; }
+            .hero-title-sub { font-size: 1.4rem; }
+            .hero-tagline { font-size: 1.3rem; }
+
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1.2rem; }
+            .dark-subtitle { font-size: 1.15rem; }
+            .card-heading { font-size: 1.2rem; }
+            .card-body { font-size: 1.05rem; }
+            .sub-heading { font-size: 1.05rem; }
+            .sub-body { font-size: 0.95rem; }
+            .label-sm { font-size: 0.9rem; }
+            .code-block { font-size: 0.9rem; padding: 18px 16px; }
+            .code-sm { font-size: 0.88rem !important; padding: 14px 14px !important; }
+            .num-highlight { font-size: 3rem; }
+
+            .grid.grid-cols-2 { grid-template-columns: 1fr !important; }
+            .grid.grid-cols-3 { grid-template-columns: 1fr !important; }
+
+            .flow-step { font-size: 0.85rem; padding: 10px 8px; }
+            .flow-arrow { font-size: 1.1rem; }
+            .flex.items-center.gap-4.mb-16 { flex-wrap: wrap; gap: 6px; }
+
+            section { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+            .max-w-5xl { padding-left: 20px; padding-right: 20px; }
+
+            .example-prompt-box { font-size: 0.85rem; padding: 12px 14px; }
+            .pill { font-size: 0.9rem; padding: 6px 14px; }
+            .type-badge { font-size: 0.88rem; }
+
+            .page-indicator { display: none; }
         }
-        .example-prompt-box .ep-highlight { color: #64d2ff; }
-        .example-prompt-box .ep-string { color: #ffd60a; }
+
+        @media (max-width: 480px) {
+            body { font-size: 16px; }
+            .hero-title-main { font-size: 2.4rem; }
+            .hero-title-sub { font-size: 1.1rem; }
+            .hero-tagline { font-size: 1.1rem; }
+            .hero-character img { height: 35vh; opacity: 0.2; }
+            .vol-badge-text { font-size: 0.95rem; }
+            .section-title { font-size: 1.8rem; }
+            .section-subtitle { font-size: 1.05rem; }
+            .code-block { font-size: 0.82rem; padding: 14px 12px; border-radius: 12px; }
+            .glass-card { border-radius: 16px; }
+            .dark-card { border-radius: 16px; }
+            .caution-box { border-radius: 14px; }
+        }
 
         @media print {
             .glass-nav, .page-indicator, .scroll-progress, .page-logo { display: none !important; }
@@ -485,13 +436,8 @@
 </head>
 <body>
 
-<!-- ★ Fixed Logo — 내려진 위치 -->
-<img
-    src="https://www.sec.gov/Archives/edgar/data/1047127/000104712724000156/amkor-logoxxxcmyk002.jpg"
-    alt="Amkor Technology"
-    class="page-logo"
-    id="pageLogo"
->
+<!-- Fixed Logo -->
+<img src="https://www.sec.gov/Archives/edgar/data/1047127/000104712724000156/amkor-logoxxxcmyk002.jpg" alt="Amkor Technology" class="page-logo" id="pageLogo">
 
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -501,7 +447,7 @@
     <div class="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
         <div class="flex items-center gap-2">
             <span class="text-xl font-bold tracking-tight" style="color: var(--apple-gray-1);">⛓️‍💥</span>
-            <span class="font-semibold tracking-tight" style="color: var(--apple-gray-1); font-size: 1.1rem;">CoT Handbook</span>
+            <span class="font-semibold tracking-tight" style="color: var(--apple-gray-1); font-size: 1.15rem;">CoT Handbook</span>
         </div>
         <div class="flex items-center gap-7" style="margin-right: 100px;">
             <a href="#definition" class="nav-link">정의</a>
@@ -518,15 +464,15 @@
 
 <!-- Page Dots -->
 <div class="page-indicator" id="pageIndicator">
-    <div class="page-dot active" data-section="hero" title="표지"></div>
-    <div class="page-dot" data-section="definition" title="정의"></div>
-    <div class="page-dot" data-section="principle" title="원리"></div>
-    <div class="page-dot" data-section="comparison" title="비교"></div>
-    <div class="page-dot" data-section="types" title="유형"></div>
-    <div class="page-dot" data-section="usage" title="활용영역"></div>
-    <div class="page-dot" data-section="guide" title="작성가이드"></div>
-    <div class="page-dot" data-section="caution" title="주의사항"></div>
-    <div class="page-dot" data-section="summary" title="요약"></div>
+    <div class="page-dot active" data-section="hero"></div>
+    <div class="page-dot" data-section="definition"></div>
+    <div class="page-dot" data-section="principle"></div>
+    <div class="page-dot" data-section="comparison"></div>
+    <div class="page-dot" data-section="types"></div>
+    <div class="page-dot" data-section="usage"></div>
+    <div class="page-dot" data-section="guide"></div>
+    <div class="page-dot" data-section="caution"></div>
+    <div class="page-dot" data-section="summary"></div>
 </div>
 
 
@@ -538,7 +484,12 @@
     <div class="hero-gradient-orb orb-2"></div>
     <div class="hero-gradient-orb orb-3"></div>
 
-    <!-- ★ 시리즈 뱃지 — 내려진 위치, 큰 글씨 -->
+    <!-- ★ 캐릭터 이미지 — 왼쪽 배치 -->
+    <div class="hero-character fade-in">
+        <img src="https://i.imgur.com/PYXxfCu.png" alt="AI Character">
+    </div>
+
+    <!-- 시리즈 뱃지 -->
     <div class="vol-badge fade-in">
         <div class="vol-badge-inner">
             <span class="vol-badge-text">AI로 일잘러 되기 시리즈 6</span>
@@ -551,24 +502,14 @@
                 Prompt Engineering Series
             </span>
         </div>
-
         <div class="mb-3 fade-in fade-in-delay-1">
             <span class="hero-title-sub">생각의 사슬</span>
         </div>
-        <h1 class="hero-title-main mb-8 fade-in fade-in-delay-2">
-            Chain Of Thought
-        </h1>
-
-        <p class="hero-tagline mb-5 fade-in fade-in-delay-3">
-            AI에게 "생각하는 과정"을 요구하는 기술
-        </p>
-
-        <!-- ★ 가독성 개선된 부제 -->
-        <p class="font-medium mb-12 fade-in fade-in-delay-4" style="color: #c7c7cc; font-size: 1.15rem; letter-spacing: 0.02em;">
-            ATK L&D팀 프롬프팅 핸드북
-        </p>
+        <h1 class="hero-title-main mb-8 fade-in fade-in-delay-2">Chain Of Thought</h1>
+        <p class="hero-tagline mb-5 fade-in fade-in-delay-3">AI에게 "생각하는 과정"을 요구하는 기술</p>
+        <p class="font-medium mb-12 fade-in fade-in-delay-4" style="color: #c7c7cc; font-size: 1.2rem; letter-spacing: 0.02em;">ATK L&D팀 프롬프팅 핸드북</p>
         <div class="fade-in fade-in-delay-5">
-            <a href="#definition" class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg" style="background: var(--apple-blue); font-size: 1.1rem;">
+            <a href="#definition" class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg" style="background: var(--apple-blue); font-size: 1.15rem;">
                 시작하기
                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M8 3l5 5-5 5M13 8H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
@@ -582,37 +523,20 @@
 <!-- ============================ -->
 <section class="py-32" id="definition" style="background: var(--apple-bg);">
     <div class="max-w-5xl mx-auto px-6">
-        <div class="fade-in mb-6">
-            <span class="pill pill-blue">01 — 정의와 배경</span>
-        </div>
-        <h2 class="section-title gradient-text-blue mb-6 fade-in fade-in-delay-1">
-            Chain of Thought란<br>무엇인가.
-        </h2>
-        <p class="section-subtitle max-w-3xl mb-16 fade-in fade-in-delay-2">
-            AI 모델에게 최종 답변만 출력하도록 하는 것이 아니라, 결론에 도달하기까지의
-            중간 추론 과정을 단계별로 명시적으로 서술하도록 유도하는 프롬프트 엔지니어링 기법입니다.
-        </p>
+        <div class="fade-in mb-6"><span class="pill pill-blue">01 — 정의와 배경</span></div>
+        <h2 class="section-title gradient-text-blue mb-6 fade-in fade-in-delay-1">Chain of Thought란<br>무엇인가.</h2>
+        <p class="section-subtitle max-w-3xl mb-16 fade-in fade-in-delay-2">AI 모델에게 최종 답변만 출력하도록 하는 것이 아니라, 결론에 도달하기까지의 중간 추론 과정을 단계별로 명시적으로 서술하도록 유도하는 프롬프트 엔지니어링 기법입니다.</p>
 
         <div class="grid grid-cols-2 gap-8 mb-16">
             <div class="glass-card p-8 fade-in fade-in-delay-1">
-                <div class="icon-circle mb-5" style="background: rgba(0, 113, 227, 0.08);"><span>📖</span></div>
+                <div class="icon-circle mb-5" style="background: rgba(0,113,227,0.08);"><span>📖</span></div>
                 <h3 class="card-heading mb-3" style="color: var(--apple-gray-1);">정의</h3>
-                <p class="card-body" style="color: var(--apple-gray-2);">
-                    Chain of Thought(사고의 연쇄)는 LLM에게 <strong style="color: var(--apple-gray-1);">중간 추론 단계를 명시적으로 생성</strong>하도록
-                    유도하여, 복잡한 문제에서의 정확도와 투명성을 동시에 확보하는 프롬프팅 기법입니다.
-                    단순히 "답을 말해줘"가 아닌, "어떻게 그 답에 도달했는지 보여줘"라고 요구하는 것이 핵심입니다.
-                </p>
+                <p class="card-body" style="color: var(--apple-gray-2);">Chain of Thought(사고의 연쇄)는 LLM에게 <strong style="color: var(--apple-gray-1);">중간 추론 단계를 명시적으로 생성</strong>하도록 유도하여, 복잡한 문제에서의 정확도와 투명성을 동시에 확보하는 프롬프팅 기법입니다. 단순히 "답을 말해줘"가 아닌, "어떻게 그 답에 도달했는지 보여줘"라고 요구하는 것이 핵심입니다.</p>
             </div>
-
             <div class="glass-card p-8 fade-in fade-in-delay-2">
-                <div class="icon-circle mb-5" style="background: rgba(175, 82, 222, 0.08);"><span>🔬</span></div>
+                <div class="icon-circle mb-5" style="background: rgba(175,82,222,0.08);"><span>🔬</span></div>
                 <h3 class="card-heading mb-3" style="color: var(--apple-gray-1);">등장 배경</h3>
-                <p class="card-body" style="color: var(--apple-gray-2);">
-                    2022년 Google Research의 <strong style="color: var(--apple-gray-1);">Jason Wei</strong> 등이 논문
-                    <em>"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"</em> (NeurIPS 2022)를 통해
-                    본격적으로 제안하였습니다. 프롬프트에 추론 과정 예시를 포함시키는 것만으로 산술·논리·상식 추론 성능이
-                    극적으로 향상됨을 실증하여, 이후 프롬프트 엔지니어링의 핵심 기법으로 자리잡았습니다.
-                </p>
+                <p class="card-body" style="color: var(--apple-gray-2);">2022년 Google Research의 <strong style="color: var(--apple-gray-1);">Jason Wei</strong> 등이 논문 <em>"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"</em> (NeurIPS 2022)를 통해 본격적으로 제안하였습니다. 프롬프트에 추론 과정 예시를 포함시키는 것만으로 산술·논리·상식 추론 성능이 극적으로 향상됨을 실증하여, 이후 프롬프트 엔지니어링의 핵심 기법으로 자리잡았습니다.</p>
             </div>
         </div>
 
@@ -621,12 +545,7 @@
                 <div class="icon-circle" style="background: rgba(0,113,227,0.1);"><span>💡</span></div>
                 <div>
                     <h3 class="sub-heading mb-2" style="color: var(--apple-gray-1);">쉬운 비유</h3>
-                    <p class="card-body" style="color: var(--apple-gray-2);">
-                        수학 시험에서 <strong style="color: var(--apple-gray-1);">"풀이 과정을 쓰시오"</strong>라고 요구하는 것과 동일한 원리입니다.
-                        답만 적으면 어디서 틀렸는지 알 수 없지만, 풀이를 쓰면 실수가 줄고 채점자도 검증할 수 있습니다.
-                        반도체 후공정으로 비유하면, 최종 불량률만 보는 것이 아니라
-                        <strong style="color: var(--apple-gray-1);">각 공정 단계별 수율을 추적</strong>하여 어디서 문제가 생겼는지 파악하는 것과 같습니다.
-                    </p>
+                    <p class="card-body" style="color: var(--apple-gray-2);">수학 시험에서 <strong style="color: var(--apple-gray-1);">"풀이 과정을 쓰시오"</strong>라고 요구하는 것과 동일한 원리입니다. 답만 적으면 어디서 틀렸는지 알 수 없지만, 풀이를 쓰면 실수가 줄고 채점자도 검증할 수 있습니다. 반도체 후공정으로 비유하면, 최종 불량률만 보는 것이 아니라 <strong style="color: var(--apple-gray-1);">각 공정 단계별 수율을 추적</strong>하여 어디서 문제가 생겼는지 파악하는 것과 같습니다.</p>
                 </div>
             </div>
         </div>
@@ -639,14 +558,9 @@
 <!-- ============================ -->
 <section class="py-32" id="principle" style="background: #000000; color: #f5f5f7;">
     <div class="max-w-5xl mx-auto px-6">
-        <div class="fade-in mb-6">
-            <span class="pill" style="background: rgba(100,210,255,0.1); color: #64d2ff;">02 — 핵심 원리</span>
-        </div>
+        <div class="fade-in mb-6"><span class="pill" style="background: rgba(100,210,255,0.1); color: #64d2ff;">02 — 핵심 원리</span></div>
         <h2 class="section-title gradient-text-cyan mb-6 fade-in fade-in-delay-1">왜 효과가 있는가.</h2>
-        <p class="dark-subtitle max-w-xl mb-16 fade-in fade-in-delay-2">
-            CoT의 효과는 세 가지 핵심 메커니즘으로 설명됩니다.
-            각 원리가 유기적으로 결합되어 모델의 추론 정확도를 끌어올립니다.
-        </p>
+        <p class="dark-subtitle max-w-xl mb-16 fade-in fade-in-delay-2">CoT의 효과는 세 가지 핵심 메커니즘으로 설명됩니다. 각 원리가 유기적으로 결합되어 모델의 추론 정확도를 끌어올립니다.</p>
 
         <div class="flex items-center gap-4 mb-16 fade-in fade-in-delay-2">
             <div class="flow-step" style="background: rgba(100,210,255,0.06); border: 1px solid rgba(100,210,255,0.15); color: #64d2ff;">① 문제 분해</div>
@@ -662,17 +576,17 @@
             <div class="dark-card p-7 fade-in fade-in-delay-1">
                 <div class="num-highlight mb-4">01</div>
                 <h3 class="sub-heading mb-3" style="color: #f5f5f7;">복잡한 문제의 분해</h3>
-                <p class="sub-body" style="color: #86868b;">하나의 복잡한 문제를 관리 가능한 여러 하위 단계로 쪼갭니다. 모델이 한 번에 큰 논리적 도약을 시도하는 대신, 각 단계에서 작은 추론을 수행하므로 개별 단계의 오류 가능성이 현저히 감소합니다. 다이싱부터 패키징까지 전 공정을 한꺼번에 처리하는 것이 아니라 각 공정을 순차적으로 점검하는 것과 같습니다.</p>
+                <p class="sub-body" style="color: #86868b;">하나의 복잡한 문제를 관리 가능한 여러 하위 단계로 쪼갭니다. 모델이 한 번에 큰 논리적 도약을 시도하는 대신, 각 단계에서 작은 추론을 수행하므로 개별 단계의 오류 가능성이 현저히 감소합니다.</p>
             </div>
             <div class="dark-card p-7 fade-in fade-in-delay-2">
                 <div class="num-highlight mb-4">02</div>
                 <h3 class="sub-heading mb-3" style="color: #f5f5f7;">중간 결과의 맥락 전달</h3>
-                <p class="sub-body" style="color: #86868b;">각 추론 단계의 출력이 다음 단계의 맥락(context)으로 작동합니다. 모델은 자신이 이전 단계에서 도출한 내용을 참조하며 논리를 전개하게 되어, 전체 추론의 일관성과 정합성이 높아집니다. 공정에서 이전 단계의 검사 결과를 다음 단계의 파라미터 설정에 반영하는 원리와 유사합니다.</p>
+                <p class="sub-body" style="color: #86868b;">각 추론 단계의 출력이 다음 단계의 맥락(context)으로 작동합니다. 모델은 자신이 이전 단계에서 도출한 내용을 참조하며 논리를 전개하게 되어, 전체 추론의 일관성과 정합성이 높아집니다.</p>
             </div>
             <div class="dark-card p-7 fade-in fade-in-delay-3">
                 <div class="num-highlight mb-4">03</div>
                 <h3 class="sub-heading mb-3" style="color: #f5f5f7;">투명성과 검증 가능성</h3>
-                <p class="sub-body" style="color: #86868b;">추론 과정이 텍스트로 명시되므로, 사용자가 모델의 논리를 따라가며 어느 지점에서 오류가 발생했는지 식별할 수 있습니다. 이는 결과만 받을 때에는 불가능한 것으로, 답변에 대한 신뢰도 판단과 오류 수정을 가능하게 만드는 CoT의 가장 실용적인 이점입니다.</p>
+                <p class="sub-body" style="color: #86868b;">추론 과정이 텍스트로 명시되므로, 사용자가 모델의 논리를 따라가며 어느 지점에서 오류가 발생했는지 식별할 수 있습니다. 답변에 대한 신뢰도 판단과 오류 수정을 가능하게 만드는 CoT의 가장 실용적인 이점입니다.</p>
             </div>
         </div>
     </div>
@@ -704,12 +618,11 @@
                         <div class="code-block code-sm mb-5"><span class="string">"38개입니다."</span></div>
                         <div class="flex items-start gap-3 mt-4 p-4 rounded-2xl" style="background: rgba(255,59,48,0.04);">
                             <span class="text-lg">⚠️</span>
-                            <p class="sub-body" style="color: var(--apple-gray-2);">답의 근거를 알 수 없으며, 오류 발생 시 어디서 틀렸는지 확인이 불가능합니다. 사용자는 답을 맹목적으로 신뢰하거나, 직접 검산해야 합니다.</p>
+                            <p class="sub-body" style="color: var(--apple-gray-2);">답의 근거를 알 수 없으며, 오류 발생 시 어디서 틀렸는지 확인이 불가능합니다.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="fade-in fade-in-delay-2">
                 <div class="glass-card overflow-hidden" style="border-color: rgba(52,199,89,0.15);">
                     <div class="px-7 py-4" style="background: rgba(52,199,89,0.04);"><p class="label-sm uppercase" style="color: #34c759;">Chain of Thought Prompting</p></div>
@@ -725,7 +638,7 @@
                         </div>
                         <div class="flex items-start gap-3 mt-5 p-4 rounded-2xl" style="background: rgba(52,199,89,0.04);">
                             <span class="text-lg">✅</span>
-                            <p class="sub-body" style="color: var(--apple-gray-2);">각 단계의 추론이 명시되어 있어, 오류 발생 시 해당 단계를 즉시 식별·수정할 수 있습니다. 사용자가 논리를 따라가며 신뢰 여부를 직접 판단할 수 있습니다.</p>
+                            <p class="sub-body" style="color: var(--apple-gray-2);">각 단계의 추론이 명시되어 있어, 오류 발생 시 즉시 식별·수정할 수 있습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -734,14 +647,14 @@
 
         <div class="glass-card p-7 fade-in">
             <h3 class="sub-heading mb-3" style="color: var(--apple-gray-1);">핵심 차이</h3>
-            <p class="card-body" style="color: var(--apple-gray-2);">Standard Prompting은 <strong style="color: var(--apple-gray-1);">"입력 → 답"</strong> 구조이고, CoT는 <strong style="color: var(--apple-gray-1);">"입력 → 추론₁ → 추론₂ → … → 답"</strong> 구조입니다. 단순한 질문에서는 차이가 미미하지만, 다단계 추론이 필요한 문제에서는 정확도 차이가 극적으로 벌어집니다. 특히 중간 과정이 공개되기 때문에 결과의 검증 가능성(Verifiability)이 확보된다는 것이 가장 큰 실무적 이점입니다.</p>
+            <p class="card-body" style="color: var(--apple-gray-2);">Standard Prompting은 <strong style="color: var(--apple-gray-1);">"입력 → 답"</strong> 구조이고, CoT는 <strong style="color: var(--apple-gray-1);">"입력 → 추론₁ → 추론₂ → … → 답"</strong> 구조입니다. 다단계 추론이 필요한 문제에서는 정확도 차이가 극적으로 벌어지며, 결과의 검증 가능성(Verifiability)이 확보된다는 것이 가장 큰 실무적 이점입니다.</p>
         </div>
     </div>
 </section>
 
 
 <!-- ============================ -->
-<!-- PAGE 5: TYPES — ★ 예시 추가   -->
+<!-- PAGE 5: TYPES                 -->
 <!-- ============================ -->
 <section class="py-32" id="types" style="background: var(--apple-gray-5);">
     <div class="max-w-5xl mx-auto px-6">
@@ -750,37 +663,27 @@
         <p class="section-subtitle max-w-3xl mb-16 fade-in fade-in-delay-2">CoT는 하나의 기법이 아니라, 상황에 따라 선택할 수 있는 다양한 변형이 존재합니다.</p>
 
         <div class="grid grid-cols-2 gap-8">
-            <!-- ★ Few-Shot CoT -->
             <div class="glass-card p-8 fade-in fade-in-delay-1" style="background: #ffffff;">
                 <div class="flex items-center gap-3 mb-5">
                     <span class="type-badge" style="background: rgba(0,113,227,0.08); color: #0071e3;">① Few-Shot CoT</span>
                     <span class="text-tiny font-medium" style="color: var(--apple-gray-3);">예시 기반</span>
                 </div>
-                <p class="card-body mb-5" style="color: var(--apple-gray-2);">
-                    프롬프트에 <strong style="color: var(--apple-gray-1);">추론 과정이 포함된 예시를 1~3개 제공</strong>하여,
-                    모델이 해당 패턴을 학습한 뒤 새로운 문제에도 동일한 방식으로 추론하도록 유도합니다.
-                    Jason Wei의 원 논문에서 처음 제안된 가장 기본적인 형태입니다.
-                </p>
+                <p class="card-body mb-5" style="color: var(--apple-gray-2);">프롬프트에 <strong style="color: var(--apple-gray-1);">추론 과정이 포함된 예시를 1~3개 제공</strong>하여, 모델이 해당 패턴을 학습한 뒤 새로운 문제에도 동일한 방식으로 추론하도록 유도합니다.</p>
                 <div class="example-prompt-box">
                     <span class="ep-label">실제 프롬프트 예시</span>
-                    <span class="ep-highlight">Q:</span> <span class="ep-string">카페에 사과 23개가 있었다. 점심에 20개를 쓰고 6개를 샀다. 몇 개?</span><br>
+                    <span class="ep-highlight">Q:</span> <span class="ep-string">카페에 사과 23개. 20개 사용, 6개 구매. 몇 개?</span><br>
                     <span class="ep-highlight">A:</span> 23−20=3, 3+6=<span class="ep-string">9개</span><br><br>
                     <span class="ep-highlight">Q:</span> <span class="ep-string">창고에 트레이 48개. 15개 출고, 8개 입고, 3개 폐기. 몇 개?</span><br>
                     <span class="ep-highlight">A:</span> (위 패턴대로 모델이 단계별로 풀이)
                 </div>
             </div>
 
-            <!-- ★ Zero-Shot CoT -->
             <div class="glass-card p-8 fade-in fade-in-delay-2" style="background: #ffffff;">
                 <div class="flex items-center gap-3 mb-5">
                     <span class="type-badge" style="background: rgba(175,82,222,0.08); color: #af52de;">② Zero-Shot CoT</span>
                     <span class="text-tiny font-medium" style="color: var(--apple-gray-3);">지시어 기반</span>
                 </div>
-                <p class="card-body mb-5" style="color: var(--apple-gray-2);">
-                    예시 없이 <strong style="color: var(--apple-gray-1);">"Let's think step by step"</strong> 같은
-                    트리거 문구만으로 추론을 유도합니다. Kojima et al.(2022)이 제안하였으며,
-                    단 한 줄의 지시문만으로도 추론 성능이 대폭 향상됩니다.
-                </p>
+                <p class="card-body mb-5" style="color: var(--apple-gray-2);">예시 없이 <strong style="color: var(--apple-gray-1);">"Let's think step by step"</strong> 같은 트리거 문구만으로 추론을 유도합니다. 단 한 줄의 지시문만으로도 추론 성능이 대폭 향상됩니다.</p>
                 <div class="example-prompt-box">
                     <span class="ep-label">실제 프롬프트 예시</span>
                     <span class="ep-string">"와이어 본딩 공정에서 Ball lift 불량이 발생했습니다.</span><br>
@@ -789,17 +692,12 @@
                 </div>
             </div>
 
-            <!-- ★ Auto-CoT -->
             <div class="glass-card p-8 fade-in fade-in-delay-3" style="background: #ffffff;">
                 <div class="flex items-center gap-3 mb-5">
                     <span class="type-badge" style="background: rgba(255,149,0,0.08); color: #ff9500;">③ Auto-CoT</span>
                     <span class="text-tiny font-medium" style="color: var(--apple-gray-3);">자동 생성</span>
                 </div>
-                <p class="card-body mb-5" style="color: var(--apple-gray-2);">
-                    모델이 스스로 다양한 문제에 대한 추론 체인을 <strong style="color: var(--apple-gray-1);">자동으로 생성</strong>하고,
-                    이를 few-shot 예시로 재활용합니다. 수작업 예시 작성 부담을 줄여주며,
-                    대규모 문제 세트에 적용할 때 효율적입니다.
-                </p>
+                <p class="card-body mb-5" style="color: var(--apple-gray-2);">모델이 스스로 다양한 문제에 대한 추론 체인을 <strong style="color: var(--apple-gray-1);">자동으로 생성</strong>하고, 이를 few-shot 예시로 재활용합니다. 수작업 부담을 줄여줍니다.</p>
                 <div class="example-prompt-box">
                     <span class="ep-label">실제 프롬프트 예시</span>
                     <span class="ep-string">"아래 5가지 유형의 패키징 불량에 대해</span><br>
@@ -809,17 +707,12 @@
                 </div>
             </div>
 
-            <!-- ★ Self-Consistency -->
             <div class="glass-card p-8 fade-in fade-in-delay-4" style="background: #ffffff;">
                 <div class="flex items-center gap-3 mb-5">
                     <span class="type-badge" style="background: rgba(52,199,89,0.08); color: #34c759;">④ Self-Consistency</span>
                     <span class="text-tiny font-medium" style="color: var(--apple-gray-3);">다수결 검증</span>
                 </div>
-                <p class="card-body mb-5" style="color: var(--apple-gray-2);">
-                    하나의 문제에 대해 <strong style="color: var(--apple-gray-1);">여러 개의 서로 다른 CoT 경로를 생성</strong>한 뒤,
-                    가장 빈번하게 도출된 답변을 최종 답으로 선택합니다.
-                    다수결 투표와 유사한 원리로, Wang et al.(2022)이 제안하였습니다.
-                </p>
+                <p class="card-body mb-5" style="color: var(--apple-gray-2);">하나의 문제에 대해 <strong style="color: var(--apple-gray-1);">여러 개의 서로 다른 CoT 경로를 생성</strong>한 뒤, 가장 빈번하게 도출된 답변을 최종 답으로 선택합니다.</p>
                 <div class="example-prompt-box">
                     <span class="ep-label">실제 프롬프트 예시</span>
                     <span class="ep-string">"수율 저하 원인을 3가지 서로 다른 관점에서</span><br>
@@ -851,31 +744,19 @@
                 <div class="space-y-5">
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(48,209,88,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">🔢</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">다단계 산술·수학 문제</h4>
-                            <p class="sub-body" style="color: #86868b;">수율 계산, 원가 분석, 공정 파라미터 최적화 등 여러 번의 계산이 연쇄적으로 이어지는 문제에서 중간 과정 서술이 오류를 크게 줄입니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">다단계 산술·수학 문제</h4><p class="sub-body" style="color: #86868b;">수율 계산, 원가 분석, 공정 파라미터 최적화 등에서 중간 과정 서술이 오류를 크게 줄입니다.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(48,209,88,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">🔍</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">논리 추론 및 인과 분석</h4>
-                            <p class="sub-body" style="color: #86868b;">불량 원인 분석(Root Cause Analysis)처럼 원인과 결과를 추적하는 작업, 조건부 논리가 필요한 문제에서 특히 효과적입니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">논리 추론 및 인과 분석</h4><p class="sub-body" style="color: #86868b;">Root Cause Analysis처럼 원인과 결과를 추적하는 작업에서 특히 효과적입니다.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(48,209,88,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">⚖️</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">복잡한 의사결정·비교 분석</h4>
-                            <p class="sub-body" style="color: #86868b;">여러 대안의 장단점을 단계적으로 평가하여 최적안을 도출하는 상황에서 균형 잡힌 결론을 유도할 수 있습니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">복잡한 의사결정·비교 분석</h4><p class="sub-body" style="color: #86868b;">여러 대안의 장단점을 단계적으로 평가하여 최적안을 도출하는 상황에 적합합니다.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(48,209,88,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">🛠️</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">코드 디버깅 · 프로세스 설계</h4>
-                            <p class="sub-body" style="color: #86868b;">프로그래밍 로직 추적, 교육 과정 설계, 프로젝트 계획 수립 등 순서가 중요한 작업에 적합합니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">코드 디버깅 · 프로세스 설계</h4><p class="sub-body" style="color: #86868b;">교육 과정 설계, 프로젝트 계획 수립 등 순서가 중요한 작업에 적합합니다.</p></div>
                     </div>
                 </div>
             </div>
@@ -888,24 +769,15 @@
                 <div class="space-y-5">
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(255,69,58,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">📌</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">단순 사실 조회</h4>
-                            <p class="sub-body" style="color: #86868b;">"대한민국의 수도는?"과 같은 질문에 CoT를 적용하면 불필요한 장황함만 추가됩니다. 답의 정확도는 동일하면서 토큰만 소모하는 비효율이 발생합니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">단순 사실 조회</h4><p class="sub-body" style="color: #86868b;">답의 정확도는 동일하면서 토큰만 소모하는 비효율이 발생합니다.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(255,69,58,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">🎨</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">창의적 글쓰기·감성 대화</h4>
-                            <p class="sub-body" style="color: #86868b;">시 창작, 브레인스토밍, 공감 대화 등에서는 단계적 논리보다 자유로운 발상이 중요하므로 CoT가 오히려 창의성을 제약하는 요인이 될 수 있습니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">창의적 글쓰기·감성 대화</h4><p class="sub-body" style="color: #86868b;">자유로운 발상이 중요한 영역에서 CoT는 오히려 창의성을 제약할 수 있습니다.</p></div>
                     </div>
                     <div class="flex items-start gap-4">
                         <div style="background: rgba(255,69,58,0.1); min-width:44px; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="font-size:1.3rem;">🏷️</span></div>
-                        <div>
-                            <h4 class="sub-heading mb-1" style="color: #f5f5f7;">단순 분류 작업</h4>
-                            <p class="sub-body" style="color: #86868b;">이미 명확한 기준이 있는 단순 분류(예: 긍정/부정 판별)에서는 CoT가 과도한 오버헤드를 유발할 수 있습니다. 간결한 프롬프트가 더 효율적입니다.</p>
-                        </div>
+                        <div><h4 class="sub-heading mb-1" style="color: #f5f5f7;">단순 분류 작업</h4><p class="sub-body" style="color: #86868b;">명확한 기준이 있는 단순 분류에서는 간결한 프롬프트가 더 효율적입니다.</p></div>
                     </div>
                 </div>
                 <div class="mt-8 p-5 rounded-2xl" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
@@ -919,7 +791,7 @@
 
 
 <!-- ============================ -->
-<!-- PAGE 7: GUIDE — ★ 부제 삭제    -->
+<!-- PAGE 7: GUIDE                 -->
 <!-- ============================ -->
 <section class="py-32" id="guide" style="background: var(--apple-bg);">
     <div class="max-w-5xl mx-auto px-6">
@@ -949,7 +821,7 @@
                         <span class="type-badge" style="background: rgba(175,82,222,0.08); color: #af52de;">기법 ②</span>
                         <h3 class="sub-heading">역할 부여(Role Setting)와 결합</h3>
                     </div>
-                    <p class="card-body mb-4" style="color: var(--apple-gray-2);">CoT에 역할(Role)을 결합하면 도메인 특화된 추론을 유도할 수 있습니다. 모델이 해당 분야 전문가의 관점에서 사고하도록 프레이밍됩니다.</p>
+                    <p class="card-body mb-4" style="color: var(--apple-gray-2);">CoT에 역할(Role)을 결합하면 도메인 특화된 추론을 유도할 수 있습니다.</p>
                     <div class="code-block code-sm">
                         <span class="prompt-label">Prompt Example</span>
                         <span class="string">"당신은 반도체 후공정 품질 엔지니어입니다.</span><br>
@@ -965,7 +837,7 @@
                         <span class="type-badge" style="background: rgba(255,149,0,0.08); color: #ff9500;">기법 ③</span>
                         <h3 class="sub-heading">출력 형식 지정</h3>
                     </div>
-                    <p class="card-body mb-4" style="color: var(--apple-gray-2);">추론 과정의 가독성을 높이려면 출력 형식까지 명시적으로 안내합니다. 구조화된 출력은 후속 활용(보고서, 교안 등)에도 유리합니다.</p>
+                    <p class="card-body mb-4" style="color: var(--apple-gray-2);">추론 과정의 가독성을 높이려면 출력 형식까지 명시적으로 안내합니다.</p>
                     <div class="code-block code-sm">
                         <span class="prompt-label">Prompt Example</span>
                         <span class="string">"각 단계에 번호를 매기고, 단계마다 '근거'와 '결론'을</span><br>
@@ -981,7 +853,7 @@
                         <span class="type-badge" style="background: rgba(52,199,89,0.08); color: #34c759;">기법 ④</span>
                         <h3 class="sub-heading">자기 검증(Self-Verification) 추가</h3>
                     </div>
-                    <p class="card-body mb-4" style="color: var(--apple-gray-2);">추론 완료 후 모델이 자신의 답변을 되돌아보게 하면 한 단계 더 정확해집니다. 이른바 "더블 체크" 지시를 프롬프트 말미에 추가하는 방법입니다.</p>
+                    <p class="card-body mb-4" style="color: var(--apple-gray-2);">추론 완료 후 모델이 자신의 답변을 되돌아보게 하면 한 단계 더 정확해집니다.</p>
                     <div class="code-block code-sm">
                         <span class="prompt-label">Prompt Example</span>
                         <span class="string">"답변을 완성한 후, 각 단계의 논리에 모순이 없는지</span><br>
@@ -991,6 +863,7 @@
             </div>
         </div>
 
+        <!-- ★ 기법 ⑤ — 마크다운 문법 적용 -->
         <div class="fade-in">
             <div class="glass-card overflow-hidden" style="background: #ffffff; border-color: rgba(0,113,227,0.15);">
                 <div class="px-8 py-5" style="background: linear-gradient(135deg, rgba(0,113,227,0.04), rgba(88,86,214,0.04));">
@@ -1002,17 +875,20 @@
                 <div class="p-8">
                     <p class="card-body mb-5" style="color: var(--apple-gray-2);">위 네 가지 기법(역할 부여 + 명확한 지시어 + 형식 지정 + 자기 검증)을 모두 결합한 프롬프트입니다. 반도체 후공정 L&D 업무에 바로 적용할 수 있는 형태를 보여줍니다.</p>
                     <div class="code-block" style="line-height: 2.2;">
-                        <span class="prompt-label">Complete Prompt — 교육 모듈 설계</span>
-                        <span class="highlight">역할:</span> <span class="string">"당신은 반도체 후공정 교육 설계 전문가입니다."</span><br><br>
-                        <span class="highlight">과제:</span> <span class="string">"신입 엔지니어를 위한 '솔더링 불량 유형과 대응'</span><br>
-                        <span class="string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교육 모듈을 설계해야 합니다."</span><br><br>
-                        <span class="highlight">단계:</span><br>
+                        <span class="prompt-label">Complete Prompt — 교육 모듈 설계 (Markdown 적용)</span>
+                        <span class="md-h1"># 역할</span><br>
+                        <span class="string">"당신은 반도체 후공정 교육 설계 전문가입니다."</span><br><br>
+                        <span class="md-h2">## 과제</span><br>
+                        <span class="string">"신입 엔지니어를 위한 '솔더링 불량 유형과 대응'</span><br>
+                        <span class="string">&nbsp;교육 모듈을 설계해야 합니다."</span><br><br>
+                        <span class="md-h2">## 단계</span><br>
                         <span class="comment">&nbsp;&nbsp;1단계 —</span> 솔더링 공정에서 발생하는 주요 불량 유형을 분류하세요.<br>
                         <span class="comment">&nbsp;&nbsp;2단계 —</span> 각 불량 유형의 기술적 원인을 분석하세요.<br>
                         <span class="comment">&nbsp;&nbsp;3단계 —</span> 각 원인에 대응하는 핵심 교육 포인트를 도출하세요.<br>
                         <span class="comment">&nbsp;&nbsp;4단계 —</span> 이를 90분 교육 세션 구조로 편성하세요.<br>
                         <span class="comment">&nbsp;&nbsp;5단계 —</span> 전체 흐름의 논리적 일관성을 검토하고, 필요시 수정하세요.<br><br>
-                        <span class="highlight">검증:</span> <span class="string">"마지막에 빠진 내용이나 논리적 비약이 없는지 확인해주세요."</span>
+                        <span class="md-h2">## 검증</span><br>
+                        <span class="string">"마지막에 빠진 내용이나 논리적 비약이 없는지 확인해주세요."</span>
                     </div>
                 </div>
             </div>
@@ -1022,37 +898,38 @@
 
 
 <!-- ============================ -->
-<!-- PAGE 8: LIMITATIONS           -->
+<!-- PAGE 8: LIMITATIONS — ★ 변경  -->
 <!-- ============================ -->
 <section class="py-32" id="caution" style="background: var(--apple-gray-5);">
     <div class="max-w-5xl mx-auto px-6">
         <div class="fade-in mb-6"><span class="pill pill-red">07 — 한계와 주의사항</span></div>
-        <h2 class="section-title gradient-text-red mb-6 fade-in fade-in-delay-1">은탄환은 없습니다.</h2>
+        <!-- ★ "만능키는 아닙니다" + 그라데이션 -->
+        <h2 class="section-title gradient-text-caution mb-6 fade-in fade-in-delay-1">만능키는 아닙니다.</h2>
         <p class="section-subtitle max-w-3xl mb-16 fade-in fade-in-delay-2">CoT는 강력한 기법이지만 만능이 아닙니다. 다음 네 가지 한계를 반드시 인지하고 사용해야 합니다.</p>
 
         <div class="grid grid-cols-2 gap-8">
             <div class="caution-box p-7 fade-in fade-in-delay-1">
                 <div class="pl-3">
                     <div class="flex items-center gap-3 mb-3"><span class="text-2xl">💰</span><h3 class="sub-heading">토큰 비용 증가</h3></div>
-                    <p class="card-body" style="color: var(--apple-gray-2);">추론 과정을 서술하므로 출력 길이가 길어지고, API 기반 사용 시 비용이 비례하여 증가합니다. 모든 질문에 무분별하게 CoT를 적용하는 것은 비효율적이므로, <strong style="color: var(--apple-gray-1);">문제의 복잡도에 따라 선별적으로 적용</strong>해야 합니다.</p>
+                    <p class="card-body" style="color: var(--apple-gray-2);">추론 과정을 서술하므로 출력 길이가 길어지고, API 기반 사용 시 비용이 비례하여 증가합니다. <strong style="color: var(--apple-gray-1);">문제의 복잡도에 따라 선별적으로 적용</strong>해야 합니다.</p>
                 </div>
             </div>
             <div class="caution-box p-7 fade-in fade-in-delay-2">
                 <div class="pl-3">
                     <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🔄</span><h3 class="sub-heading">잘못된 추론의 자기 강화</h3></div>
-                    <p class="card-body" style="color: var(--apple-gray-2);">중간 단계에서 오류가 발생하면, 모델은 그 오류를 전제로 이후 추론을 전개합니다. 결과적으로 길고 논리적으로 보이지만 실제로는 틀린 답 <strong style="color: var(--apple-gray-1);">(Confident Hallucination)</strong>이 생성될 수 있으므로 <strong style="color: var(--apple-gray-1);">반드시 사람의 검토가 수반</strong>되어야 합니다.</p>
+                    <p class="card-body" style="color: var(--apple-gray-2);">중간 단계에서 오류가 발생하면, 모델은 그 오류를 전제로 이후 추론을 전개합니다. <strong style="color: var(--apple-gray-1);">(Confident Hallucination)</strong>이 생성될 수 있으므로 <strong style="color: var(--apple-gray-1);">반드시 사람의 검토가 수반</strong>되어야 합니다.</p>
                 </div>
             </div>
             <div class="caution-box p-7 fade-in fade-in-delay-3">
                 <div class="pl-3">
                     <div class="flex items-center gap-3 mb-3"><span class="text-2xl">📏</span><h3 class="sub-heading">모델 규모 의존성</h3></div>
-                    <p class="card-body" style="color: var(--apple-gray-2);">CoT의 효과는 대형 모델(일반적으로 <strong style="color: var(--apple-gray-1);">100B 파라미터 이상</strong>)에서 뚜렷이 나타나며, 소형 모델에서는 효과가 미미하거나 오히려 성능이 저하될 수 있습니다. 사용하는 모델의 규모와 능력을 고려하여 CoT 적용 여부를 판단해야 합니다.</p>
+                    <p class="card-body" style="color: var(--apple-gray-2);">CoT의 효과는 대형 모델(<strong style="color: var(--apple-gray-1);">100B 파라미터 이상</strong>)에서 뚜렷이 나타나며, 소형 모델에서는 효과가 미미하거나 오히려 성능이 저하될 수 있습니다.</p>
                 </div>
             </div>
             <div class="caution-box p-7 fade-in fade-in-delay-4">
                 <div class="pl-3">
                     <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🧠</span><h3 class="sub-heading">추론 ≠ 이해</h3></div>
-                    <p class="card-body" style="color: var(--apple-gray-2);">CoT로 생성된 단계별 설명이 모델의 진정한 "이해"를 의미하지는 않습니다. 언어 패턴에 기반한 생성일 가능성이 있으므로, <strong style="color: var(--apple-gray-1);">도메인 전문가의 비판적 검토가 반드시 필요</strong>합니다. 특히 전문 분야에서는 AI의 추론을 맹신하지 말고 교차 검증해야 합니다.</p>
+                    <p class="card-body" style="color: var(--apple-gray-2);">CoT로 생성된 단계별 설명이 모델의 진정한 "이해"를 의미하지는 않습니다. <strong style="color: var(--apple-gray-1);">도메인 전문가의 비판적 검토가 반드시 필요</strong>합니다.</p>
                 </div>
             </div>
         </div>
@@ -1097,7 +974,7 @@
 
         <div class="fade-in">
             <div class="glass-card p-10 text-center" style="background: linear-gradient(135deg, rgba(0,113,227,0.03), rgba(88,86,214,0.03)); border-color: rgba(0,113,227,0.1);">
-                <h3 class="font-extrabold tracking-tight mb-4 gradient-text-summary" style="font-size: 1.9rem;">"복잡한 문제에는 생각의 과정을 보여달라."</h3>
+                <h3 class="font-extrabold tracking-tight mb-4 gradient-text-summary" style="font-size: 2rem;">"복잡한 문제에는 생각의 과정을 보여달라."</h3>
                 <p class="card-body max-w-2xl mx-auto" style="color: var(--apple-gray-2);">CoT는 결국 이 한 문장으로 요약됩니다. 다만 만능이 아니므로, 문제의 복잡도를 먼저 판단하고 적재적소에 적용하는 것이 진짜 실력입니다. 항상 사람의 검토를 병행하는 것을 잊지 마세요.</p>
             </div>
         </div>
@@ -1105,19 +982,13 @@
 </section>
 
 
-<!-- ★ Footer — 가독성 개선, 문의 사항 추가 -->
+<!-- Footer -->
 <footer class="footer-section py-14">
     <div class="max-w-5xl mx-auto px-6 text-center">
-        <p class="font-semibold mb-2" style="color: #e5e5ea; font-size: 1.05rem;">
-            Chain of Thought 프롬프팅 핸드북 · AI로 일잘러 되기 시리즈 6
-        </p>
-        <p class="mb-4" style="color: #a1a1a6; font-size: 0.95rem;">
-            Prompt Engineering Series · 2026
-        </p>
+        <p class="font-semibold mb-2" style="color: #e5e5ea; font-size: 1.1rem;">Chain of Thought 프롬프팅 핸드북 · AI로 일잘러 되기 시리즈 6</p>
+        <p class="mb-4" style="color: #a1a1a6; font-size: 1rem;">Prompt Engineering Series · 2026</p>
         <div style="width: 40px; height: 1px; background: rgba(255,255,255,0.12); margin: 0 auto 16px;"></div>
-        <p style="color: #a1a1a6; font-size: 0.95rem;">
-            문의 사항 : L&D팀 정혁 수석
-        </p>
+        <p style="color: #a1a1a6; font-size: 1rem;">문의 사항 : L&D팀 정혁 수석</p>
     </div>
 </footer>
 
